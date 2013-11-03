@@ -1,0 +1,55 @@
+input[type="text"]{
+  width:300px;
+  height:20px;
+  padding:2px;
+  font-family: Georgia;
+  font-size:16px;
+  border:1px solid #ccc;
+}
+button{
+  border:1px solid #333;
+  padding:4px 9px;
+}
+textarea{
+  width:300px;
+  height:90px;
+}
+div#container{
+  width:960px;
+  height:600px;
+  border:1px solid #CCC;
+  margin:10px auto;
+}
+div#navigation{
+  width:940px;
+  height:40px;
+  padding:2px;
+  margin:4px;
+}
+div#navigation ul, li{ display:inline;margin:2px;}
+div#navigation ul li a {
+  text-decoration:none; 
+  color:#000; 
+  border:1px solid #CCC;
+  padding:3px 5px;
+}
+a.active{
+  background:#EEE;
+  border:1px solid #ccc;
+}
+div#details{
+  width:950px;
+  margin:4px;
+  height:600px;
+  float:left;
+  border:1px solid #ccc;
+}
+div.listing{
+  width:245px;
+  height:400px;
+  float:left;
+}
+div#show{
+  width:700px;
+  float:right;
+}
