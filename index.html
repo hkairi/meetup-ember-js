@@ -5,13 +5,23 @@
     <link rel="stylesheet" href="design.css" type="text/css"></link>
   </head>
   <body>
+    <!-- -->
     <script type="text/x-handlebars" id="application">
       <div id="container">
         <h3>Application &agrave; faire pendant le meetup in cha Allah</h3>
         {{ outlet }}
+        <hr>
+        <div class="component">
+          <!-- utilisation du composant -->
+          {{facebook-image}}
+        </div>
       </div>
     </script>
-    <!-- -->
+    <!-- définition du template du composant -->
+    <script type="text/x-handlebars" id="components/facebook-image">
+      <img {{bind-attr src='facebook_image'}} width="200" height="200"><br>
+      {{input valueBinding="fb_id" placeholder="votre ID sur facebook"}}
+    </script>
     <!-- -->
     <!-- -->
     <script src="js/libs/jquery.js"></script>

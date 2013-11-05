@@ -8,3 +8,14 @@ Meetup.LSAdapter = DS.LSAdapter.extend({
 });
 
 Meetup.ApplicationAdapter = Meetup.LSAdapter;
+
+Meetup.FacebookImageComponent = Ember.Component.extend({
+  fb_id: '',
+
+  facebook_image: function(){
+    var fb_id = this.get('fb_id');
+    console.log('..');
+    return "https://graph.facebook.com/"+ fb_id +"/picture?type=large" 
+  }.property('fb_id')
+
+});
