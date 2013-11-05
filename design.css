@@ -1,5 +1,4 @@
 div.component{
-  border:1px solid #ccc;
   padding:1px;
   margin:3px;
   width:208px;
@@ -17,6 +16,9 @@ img{
   padding:2px;
   border:1px solid #ccc;
   margin:1px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 input[type="text"]{
   width:200px;
