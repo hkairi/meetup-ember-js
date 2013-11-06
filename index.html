@@ -13,6 +13,10 @@
         <hr>
         <div class="component">
           <!-- utilisation du composant -->
+          {{weather-engine}}
+        </div>
+        <div class="component">
+          <!-- utilisation du composant -->
           {{facebook-image}}
         </div>
       </div>
@@ -24,6 +28,20 @@
       {{input valueBinding="fb_id" placeholder="votre ID sur facebook"}}
     </script>
     <!-- -->
+    <script type="text/x-handlebars" id="components/weather-engine">
+      <div class="titre">Weather component</div>
+      <b> Nom:</b> {{resultat.name}}<br>
+      <b> Humidit&eacute;:</b>{{resultat.main.humidity}}<br>
+      <b> Temp:</b> {{resultat.main.temp}} K<br>
+      <b> Pression:</b> {{resultat.main.pressure}}<br>
+      <b> Lat:</b> {{resultat.coord.lat}}<br>
+      <b> Lon:</b> {{resultat.coord.lon}}<br>
+      <b> Le temps qu'il fait :</b><br> 
+      {{#each resultat.weather}}
+      <p>{{ description }}</p>
+      {{/each}}
+      {{input valueBinding="ville" placeholder="votre ville"}}
+    </script>
     <!-- -->
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/handlebars.js"></script>
