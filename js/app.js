@@ -30,7 +30,8 @@ Meetup.WeatherEngineComponent = Ember.Component.extend({
     $.ajax({
       type: 'GET',
       url: this.get('url') + this.get('ville') +'&callback=?',
-      async: false, jsonpCallback: 'jsonCallback',
+      async: false, 
+      jsonpCallback: 'jsonCallback',
       contentType: "application/json", dataType: 'jsonp',
       success: function(json) {
         self.set('res',json);
