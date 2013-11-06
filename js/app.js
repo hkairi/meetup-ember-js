@@ -2,13 +2,13 @@
 window.Meetup = Ember.Application.create();
 // Meetuplication Router
 Meetup.Router.map(function(){});
-
+// Choix de l'adapter 
 Meetup.LSAdapter = DS.LSAdapter.extend({
   namespace: 'meetup'
 });
-
+// Utilisation de l'adapteur
 Meetup.ApplicationAdapter = Meetup.LSAdapter;
-
+// Facebook Component
 Meetup.FacebookImageComponent = Ember.Component.extend({
   fb_id: '',
 
@@ -18,11 +18,11 @@ Meetup.FacebookImageComponent = Ember.Component.extend({
   }.property('fb_id')
 
 });
-
+// Weather Component
 Meetup.WeatherEngineComponent = Ember.Component.extend({
   ville: '',
   res:'',
-  url: 'http://api.openweathermap.org/data/2.5/weather?q=',
+  url: 'http://api.openweathermap.org/data/2.5/weather?lang=fr&q=',
 
   resultat: function(){
     var self = this;
@@ -33,7 +33,7 @@ Meetup.WeatherEngineComponent = Ember.Component.extend({
       jsonpCallback: 'jsonCallback',
       contentType: "application/json", dataType: 'jsonp',
       success: function(json) {
-        self.set('res',json);
+        self.set('res', json);
       }
     });
     return this.get('res');
