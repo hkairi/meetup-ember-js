@@ -30,16 +30,34 @@
     <!-- -->
     <script type="text/x-handlebars" id="components/weather-engine">
       <div class="titre">Weather component</div>
-      <b> Nom:</b> {{resultat.name}}<br>
-      <b> Humidit&eacute;:</b>{{resultat.main.humidity}}<br>
-      <b> Temp:</b> {{temperature resultat.main.temp}}<br>
-      <b> Pression:</b> {{resultat.main.pressure}}<br>
-      <b> Lat:</b> {{resultat.coord.lat}}<br>
-      <b> Lon:</b> {{resultat.coord.lon}}<br>
-      <b> Le temps qu'il fait :</b><br> 
-      {{#each resultat.weather}}
-      <p>{{ description }}</p>
-      {{/each}}
+      <table>
+        <tr>
+          <td><b>Nom</b> </td><td>{{resultat.name}}</td>
+        </tr>
+        <tr>
+          <td><b>Humidit&eacute;</b></td><td>{{resultat.main.humidity}}</td>
+        </tr>
+        <tr>
+          <td><b>Temp</b></td><td> {{temperature resultat.main.temp}}</td>
+        </tr>
+        <tr>
+          <td><b>Pression</b></td><td>{{resultat.main.pressure}}</td>
+        </tr>
+        <tr>
+          <td><b>Lat</b></td><td> {{resultat.coord.lat}}</td>
+        </tr>
+        <tr>
+          <td><b>Lon</b></td><td> {{resultat.coord.lon}}</td>
+        </tr>
+        <tr>
+          <td><b>Climat </b></td>
+          <td> 
+            {{#each resultat.weather}}
+            <p>{{ description }}</p>
+            {{/each}}
+          </td>
+        </tr>
+      </table>
       {{input valueBinding="ville" placeholder="votre ville"}}
     </script>
     <!-- -->
