@@ -22,6 +22,7 @@ Meetup.FacebookImageComponent = Ember.Component.extend({
 Meetup.WeatherEngineComponent = Ember.Component.extend({
   ville: '',
   res:'',
+  temperature: 0,
   url: 'http://api.openweathermap.org/data/2.5/weather?lang=fr&q=',
 
   resultat: function(){
@@ -38,4 +39,14 @@ Meetup.WeatherEngineComponent = Ember.Component.extend({
     });
     return this.get('res');
   }.property('ville')
+});
+
+// Helper
+Ember.Handlebars.helper('temperature', function(k){
+  if (k) {
+    res = new Handlebars.SafeString( parseInt( k - 272.15 )+'C' );
+  }else{
+    res = ""
+  }
+  return res;
 });
