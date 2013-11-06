@@ -19,3 +19,23 @@ Meetup.FacebookImageComponent = Ember.Component.extend({
   }.property('fb_id')
 
 });
+
+Meetup.WeatherEngineComponent = Ember.Component.extend({
+  ville: '',
+  res:'',
+  url: 'http://api.openweathermap.org/data/2.5/weather?q=',
+
+  resultat: function(){
+    var self = this;
+    $.ajax({
+      type: 'GET',
+      url: this.get('url') + this.get('ville') +'&callback=?',
+      async: false, jsonpCallback: 'jsonCallback',
+      contentType: "application/json", dataType: 'jsonp',
+      success: function(json) {
+        self.set('res',json);
+      }
+    });
+    return this.get('res');
+  }.property('ville')
+});
