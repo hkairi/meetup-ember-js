@@ -14,7 +14,7 @@ Meetup.FacebookImageComponent = Ember.Component.extend({
 
   facebook_image: function(){
     var fb_id = this.get('fb_id');
-    return "https://graph.facebook.com/"+ fb_id +"/picture?type=large" 
+    return "https://graph.facebook.com/"+ fb_id +"/picture?type=large&width=200&height=200" 
   }.property('fb_id')
 
 });
@@ -40,7 +40,29 @@ Meetup.WeatherEngineComponent = Ember.Component.extend({
     return this.get('res');
   }.property('ville')
 });
+Meetup.GaugeBarComponent = Em.Component.extend({
+  classNames: ['gauge'],
+  classNameBindings: ['isMaxValueExceeded:exceeded'],
 
+  isMaxValueExceeded: function(){
+    var value = parseInt(this.get('value'), 10);
+    var maxValue = parseInt(this.get('maxValue'), 10);
+    return (value > maxValue);
+  }.property('value', 'maxValue'),
+
+  computedAngle: function(){
+    var value = this.get('value');
+    var maxValue = this.get('maxValue');
+
+    var percentValue = Math.floor( value/maxValue * 100 );
+    var angle = Math.floor(180 * percentValue/100 - 90);
+    var styles = ( this.get('isMaxValueExceeded') ) ? 
+                  '-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg);' : 
+                  '-webkit-transform: rotate('+angle+'deg); -2moz-transform: rotate('+angle+'deg); -ms-transform: rotate('+angle+'deg); transform: rotate('+angle+'deg);';
+
+    return styles;
+  }.property('value', 'maxValue')
+});
 // Helper
 Ember.Handlebars.helper('temperature', function(k){
   if (k) {

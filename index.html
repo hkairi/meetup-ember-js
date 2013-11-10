@@ -3,6 +3,8 @@
   <head>
     <title>Ember meetup Dakar</title>
     <link rel="stylesheet" href="design.css" type="text/css"></link>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.3.4/css/semantic.min.css">
   </head>
   <body>
     <!-- -->
@@ -13,11 +15,15 @@
         <hr>
         <div class="component">
           <!-- utilisation du composant -->
-          {{weather-engine}}
+          {{weather-engine ville="Dakar "}}
         </div>
         <div class="component">
           <!-- utilisation du composant -->
-          {{facebook-image}}
+          {{gauge-bar value="" maxValue="300"}}
+        </div>
+        <div class="component">
+          <!-- utilisation du composant -->
+          {{facebook-image fb_id="hkairi"}}
         </div>
       </div>
     </script>
@@ -27,6 +33,27 @@
       <img {{bind-attr src='facebook_image'}} width="200" height="200"><br>
       {{input valueBinding="fb_id" placeholder="votre ID sur facebook"}}
     </script>
+    <!-- -->
+    <script type="text/x-handlebars" id="components/gauge-bar">
+      <p>
+      <div class="frame">
+        <div class="labels">
+          <span class="min">0</span>
+          <span class="max">{{maxValue}}</span>
+        </div>
+        <span class="pointer" {{bind-attr style="computedAngle"}}>
+          <span class="pointer-cap"></span>
+          <span class="value">{{value}}</span>
+        </span>
+      </div>
+      <p style="margin-bottom:50px;">
+      {{input type="text" valueBinding="value" placeholder="Entrez une valeur entre 0 et 300"}}
+      </p>
+      {{#if isMaxValueExceeded}}
+      <p class="value-exceeded">Valeur maximale d&eacute;pass&eacute;e</p>
+      {{/if}}
+      </p>
+    </script>   
     <!-- -->
     <script type="text/x-handlebars" id="components/weather-engine">
       <div class="titre">Weather component</div>
@@ -60,7 +87,9 @@
       </table>
       {{input valueBinding="ville" placeholder="votre ville"}}
     </script>
-    <!-- -->
+    <!-- -->    
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/handlebars.js"></script>
     <script src="js/libs/ember.js"></script>
